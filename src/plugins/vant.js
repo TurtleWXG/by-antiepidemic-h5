@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import { Button, Search, List, Form, Field, RadioGroup, Radio, Calendar, Popup, Area } from 'vant'
+import { Button, Search, List, Form, Field, RadioGroup, Radio, Calendar, Popup, Area, Picker, Toast, Icon } from 'vant'
 
 Vue.use(Button)
 Vue.use(Search)
@@ -11,3 +11,11 @@ Vue.use(Radio)
 Vue.use(Calendar)
 Vue.use(Popup)
 Vue.use(Area)
+Vue.use(Picker)
+Vue.use(Toast)
+Vue.use(Icon)
+
+// 允许同时存在多个 Toast
+Toast.allowMultiple()
+// 将所有 Toast 的展示时长设置为 2000 毫秒
+Toast.setDefaultOptions({ duration: 2000 })
