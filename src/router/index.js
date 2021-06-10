@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import DataVisualization from '../views/DataVisualization.vue'
+import DataVisualization from '../views/DataVisualization/index.vue'
 
 Vue.use(VueRouter)
 
