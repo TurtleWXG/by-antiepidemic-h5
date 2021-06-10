@@ -1,14 +1,14 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import WeChatCollection from '../views/WeChatCollection.vue'
+import DataVisualization from '../views/DataVisualization.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'WeChatCollection',
-    component: WeChatCollection
+    name: 'DataVisualization',
+    component: DataVisualization
   },
   {
     path: '/about',
