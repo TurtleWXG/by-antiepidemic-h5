@@ -4,7 +4,7 @@
       <van-field
         v-model="form.username"
         name="username"
-        label="姓名"
+        label="姓名1"
         placeholder="请填写"
         maxlength="25"
         required
