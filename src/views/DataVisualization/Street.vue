@@ -166,7 +166,7 @@ export default {
             smooth: true,
             areaStyle: {},
             itemStyle: {
-              color: '#FF924F'
+              color: '#3695f7'
             },
             label: {
               show: true
@@ -243,7 +243,7 @@ export default {
         padding-left: 20px;
       }
       span {
-        color: #fa5050;
+        color: #3695f7;
       }
     }
     .detail-item + .detail-item {

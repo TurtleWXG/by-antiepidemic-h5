@@ -23,6 +23,7 @@
 
 <script>
 import Street from './Street.vue'
+import Hotel from './Hotel.vue'
 export default {
   name: 'DataVisualization',
   data() {
@@ -67,7 +68,7 @@ export default {
   },
   components: {
     Street,
-    Hotel: () => import(/* webpackChunkName: "dataVisualization" */ './Hotel.vue')
+    Hotel
   }
 }
 </script>
@@ -95,13 +96,13 @@ export default {
     &::before {
       content: '密切接触者趋势';
       position: absolute;
-      top: -15px;
+      top: -24px;
       left: 50%;
       width: 226px;
       height: 48px;
       font-size: 18px;
       font-weight: 600;
-      color: #e8502c;
+      color: #fff;
       text-align: center;
       line-height: 40px;
       background: url('~@/assets/tips.png');
@@ -139,7 +140,7 @@ export default {
           padding-left: 20px;
         }
         span {
-          color: #fa5050;
+          color: #3695f7;
         }
       }
       .detail-item + .detail-item {
@@ -160,7 +161,7 @@ export default {
       position: absolute;
       width: 172px;
       height: 50px;
-      background: #ff924f;
+      background: #3695f7;
       border-radius: 30px;
       z-index: 1;
       transition: left 0.5s;
