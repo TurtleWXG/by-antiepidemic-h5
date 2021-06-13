@@ -224,6 +224,7 @@ import { CanvasRenderer } from 'echarts/renderers'
 echarts.use([TitleComponent, TooltipComponent, GridComponent, LineChart, CanvasRenderer, LegendComponent])
 
 import { streetDict } from '@/utils/dict'
+import { setTextColor } from '@/common/commonFn'
 
 export default {
   name: 'Street',
@@ -256,6 +257,7 @@ export default {
         await this.loadStreetIsolateStateList({
           streetCode: this.value.value
         })
+        setTextColor()
       } catch (error) {
         console.error('init => error', error)
       } finally {

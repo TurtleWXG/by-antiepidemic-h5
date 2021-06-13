@@ -6,7 +6,7 @@ function resolve(dir) {
 
 module.exports = {
   // publicPath: process.env.NODE_ENV === 'production' ? '/' : '/',
-  publicPath: '/byfy_test',
+  publicPath: process.env.VUE_APP_BASE_URL,
   chainWebpack: config => {
     config.resolve.alias
       .set('@', resolve('./src'))
