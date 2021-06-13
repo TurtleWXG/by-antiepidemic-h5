@@ -7,6 +7,19 @@
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
 }
+.arrow {
+  position: absolute;
+  top: 50%;
+  font-size: 24px;
+  transform: translateY(-50%);
+  z-index: 20;
+  &-left {
+    left: 10px;
+  }
+  &-right {
+    right: 10px;
+  }
+}
 .view-container {
   display: flex;
   flex-direction: column;

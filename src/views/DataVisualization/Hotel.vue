@@ -1,12 +1,14 @@
 <template>
   <div>
+    <van-icon class="arrow arrow-left" name="arrow-left" />
+    <van-icon class="arrow arrow-right" name="arrow" />
     <van-swipe class="my-swipe" :loop="false">
       <van-swipe-item>
         <div class="view-container">
           <vue-scroll class="scroller">
             <div class="outside-title">密接者</div>
             <div class="select" @click="showPicker = true">
-              {{ value }}
+              {{ value.name }}
               <van-icon name="arrow-down" />
             </div>
             <!-- 在管人数 -->
@@ -17,8 +19,8 @@
                 <p>区外</p>
               </div>
               <div class="sub-value">
-                <p>1</p>
-                <p>2</p>
+                <p>{{ info.intimateInnerManageCount }}</p>
+                <p>{{ info.intimateOuterManageCount }}</p>
               </div>
             </div>
             <!-- 管理人数 -->
@@ -35,10 +37,10 @@
                 <p>区内</p>
               </div>
               <div class="third-value">
-                <p>1</p>
-                <p>2</p>
-                <p>3</p>
-                <p>4</p>
+                <p>{{ info.intimateInnerManageAddCount }}</p>
+                <p>{{ info.intimateOuterManageAddCount }}</p>
+                <p>{{ info.intimateInnerManageTotal }}</p>
+                <p>{{ info.intimateOuterManageTotal }}</p>
               </div>
             </div>
             <!-- 转为医学留观数 -->
@@ -58,17 +60,15 @@
                 <p>区内</p>
               </div>
               <div class="third-value">
-                <p>1</p>
-                <p>2</p>
-                <p>3</p>
-                <p>4</p>
+                <p>{{ info.intimateInnerObserveAddCount }}</p>
+                <p>{{ info.intimateOuterObserveAddCount }}</p>
+                <p>{{ info.intimateInnerObserveTotal }}</p>
+                <p>{{ info.intimateOuterObserveTotal }}</p>
               </div>
             </div>
             <!-- 解除观察数 -->
             <div class="item">
-              <div class="title">
-                解除观察数
-              </div>
+              <div class="title">解除观察数</div>
               <div class="sub-title">
                 <p>当日新增</p>
                 <p>累计</p>
@@ -80,10 +80,10 @@
                 <p>区内</p>
               </div>
               <div class="third-value">
-                <p>1</p>
-                <p>2</p>
-                <p>3</p>
-                <p>4</p>
+                <p>{{ info.intimateInnerRelieveAddCount }}</p>
+                <p>{{ info.intimateOuterRelieveAddCount }}</p>
+                <p>{{ info.intimateInnerRelieveTotal }}</p>
+                <p>{{ info.intimateOuterRelieveTotal }}</p>
               </div>
             </div>
           </vue-scroll>
@@ -94,7 +94,7 @@
           <vue-scroll class="scroller">
             <div class="outside-title">次密接者</div>
             <div class="select" @click="showPicker = true">
-              {{ value }}
+              {{ value.name }}
               <van-icon name="arrow-down" />
             </div>
             <!-- 在管人数 -->
@@ -105,8 +105,8 @@
                 <p>区外</p>
               </div>
               <div class="sub-value">
-                <p>1</p>
-                <p>2</p>
+                <p>{{ info.minorInnerManageCount }}</p>
+                <p>{{ info.minorOuterManageCount }}</p>
               </div>
             </div>
             <!-- 管理人数 -->
@@ -123,10 +123,10 @@
                 <p>区内</p>
               </div>
               <div class="third-value">
-                <p>1</p>
-                <p>2</p>
-                <p>3</p>
-                <p>4</p>
+                <p>{{ info.minorInnerManageAddCount }}</p>
+                <p>{{ info.minorOuterManageAddCount }}</p>
+                <p>{{ info.minorInnerManageTotal }}</p>
+                <p>{{ info.minorOuterManageTotal }}</p>
               </div>
             </div>
             <!-- 转为医学留观数 -->
@@ -146,17 +146,15 @@
                 <p>区内</p>
               </div>
               <div class="third-value">
-                <p>1</p>
-                <p>2</p>
-                <p>3</p>
-                <p>4</p>
+                <p>{{ info.minorInnerObserveAddCount }}</p>
+                <p>{{ info.minorOuterObserveAddCount }}</p>
+                <p>{{ info.minorInnerObserveTotal }}</p>
+                <p>{{ info.minorOuterObserveTotal }}</p>
               </div>
             </div>
             <!-- 解除观察数 -->
             <div class="item">
-              <div class="title">
-                解除观察数
-              </div>
+              <div class="title">解除观察数</div>
               <div class="sub-title">
                 <p>当日新增</p>
                 <p>累计</p>
@@ -168,10 +166,10 @@
                 <p>区内</p>
               </div>
               <div class="third-value">
-                <p>1</p>
-                <p>2</p>
-                <p>3</p>
-                <p>4</p>
+                <p>{{ info.minorInnerRelieveAddCount }}</p>
+                <p>{{ info.minorOuterRelieveAddCount }}</p>
+                <p>{{ info.minorInnerRelieveTotal }}</p>
+                <p>{{ info.minorOuterRelieveTotal }}</p>
               </div>
             </div>
           </vue-scroll>
@@ -181,51 +179,11 @@
     <van-popup v-model="showPicker" round position="bottom">
       <van-picker show-toolbar :columns="columns" @cancel="showPicker = false" @confirm="onConfirm" />
     </van-popup>
-    <!-- <div class="view-container">
-    <vue-scroll class="scroller">
-      <div class="select" @click="showPicker = true">
-        {{ value }}
-        <van-icon name="arrow-down" />
-      </div>
-      <div id="echarts" class="echarts-view"></div>
-      <div class="detail">
-        <div class="detail-item">
-          <label>当日新增人数</label>
-          <span>{{ info.intimateAddCount }}</span>
-        </div>
-        <div class="detail-item">
-          <label>当日解除观察人数</label>
-          <span>--</span>
-        </div>
-        <div class="detail-item">
-          <label>现有密切接触者(集中隔离)</label>
-          <span>{{ info.intimateIsolateInHotelCount }}</span>
-        </div>
-        <div class="detail-item">
-          <label>现有密切接触者(居家隔离)</label>
-          <span>{{ info.intimateIsolateInOtherCount }}</span>
-        </div>
-        <div class="detail-item">
-          <label>累计密切接触者(集中隔离)</label>
-          <span>{{
-            info.intimateAddCount + info.intimateIsolateInHotelCount + info.intimateIsolateInOtherCount
-          }}</span>
-        </div>
-        <div class="detail-item">
-          <label>累计密切接触者(居家隔离)</label>
-          <span>--</span>
-        </div>
-      </div>
-    </vue-scroll>
-    <van-popup v-model="showPicker" round position="bottom">
-      <van-picker show-toolbar :columns="columns" @cancel="showPicker = false" @confirm="onConfirm" />
-    </van-popup>
-  </div> -->
   </div>
 </template>
 
 <script>
-import { loadObserveStatementTrend, loadObserveStatementGetVo } from '@api/observe'
+// import { loadObserveStatementTrend, loadObserveStatementGetVo } from '@api/observe'
 // 引入 echarts 核心模块，核心模块提供了 echarts 使用必须要的接口。
 import * as echarts from 'echarts/core'
 // 引入柱状图图表，图表后缀都为 Chart
@@ -237,33 +195,27 @@ import { CanvasRenderer } from 'echarts/renderers'
 
 // 注册必须的组件
 echarts.use([TitleComponent, TooltipComponent, GridComponent, LineChart, CanvasRenderer, LegendComponent])
+import { loadHotelIsolateStateList } from '@api/observe'
+import { hotelDict } from '@/utils/dict'
 
 export default {
   name: 'Hotel',
   data() {
     return {
-      value: '空港假日酒店',
       info: {},
       showPicker: false,
-      columns: [
-        '空港假日酒店',
-        '永平街绿巢精品酒店',
-        '石井七天酒店金碧新城店',
-        '广州汇德酒店',
-        '锦江之星',
-        '嘉禾文星酒店',
-        '松洲维也纳酒店',
-        '嘉禾维也纳智好酒店',
-        '云城维也纳酒店',
-        '黄石汉庭酒店',
-        '京溪维也纳',
-        '石井翡丽酒店',
-        '同裕国际酒店'
-      ]
+      columns: hotelDict.map(item => {
+        return {
+          ...item,
+          text: item.name
+        }
+      }),
+      value: {}
     }
   },
   mounted() {
-    // this.init()
+    this.value = this.columns[0]
+    this.init()
   },
   methods: {
     async init() {
@@ -273,81 +225,91 @@ export default {
         message: '正在加载...'
       })
       try {
-        await Promise.all([this.loadObserveStatementTrend(this.value), this.loadObserveStatementGetVo(this.value)])
+        await this.loadHotelIsolateStateList({
+          id: this.value.value
+        })
       } catch (error) {
         console.error('init => error', error)
       } finally {
         toast.clear()
       }
     },
-    async loadObserveStatementTrend(name) {
+    async loadHotelIsolateStateList(params) {
       try {
-        const { data } = await loadObserveStatementTrend(name)
-        this.initEcharts(data)
-      } catch (error) {
-        console.error('loadObserveStatementTrend => error', error)
-      }
-    },
-    async loadObserveStatementGetVo(name) {
-      try {
-        const { data } = await loadObserveStatementGetVo(name)
+        const { data } = await loadHotelIsolateStateList(params)
         this.info = data
       } catch (error) {
-        console.error('loadObserveStatementGetVo => error', error)
+        console.error('loadHotelIsolateStateList => error', error)
       }
     },
-    initEcharts({ key, value }) {
-      const myChart = echarts.init(document.getElementById('echarts'))
-      myChart.setOption({
-        grid: {
-          top: 30,
-          right: 50,
-          bottom: 30
-        },
-        xAxis: {
-          type: 'category',
-          name: '日期',
-          boundaryGap: false,
-          data: key,
-          nameTextStyle: {
-            color: '#666666'
-          },
-          axisLabel: {
-            rotate: '20',
-            align: 'center',
-            margin: '18',
-            interval: 0
-          }
-        },
-        yAxis: {
-          type: 'value',
-          name: '人数',
-          nameTextStyle: {
-            color: '#666666'
-          },
-          splitLine: {
-            lineStyle: {
-              color: '#EFEFEF'
-            }
-          }
-        },
-        series: [
-          {
-            name: '销量',
-            type: 'line',
-            smooth: true,
-            areaStyle: {},
-            itemStyle: {
-              color: '#3695f7'
-            },
-            label: {
-              show: true
-            },
-            data: value
-          }
-        ]
-      })
-    },
+    // async loadObserveStatementTrend(name) {
+    //   try {
+    //     const { data } = await loadObserveStatementTrend(name)
+    //     this.initEcharts(data)
+    //   } catch (error) {
+    //     console.error('loadObserveStatementTrend => error', error)
+    //   }
+    // },
+    // async loadObserveStatementGetVo(name) {
+    //   try {
+    //     const { data } = await loadObserveStatementGetVo(name)
+    //     this.info = data
+    //   } catch (error) {
+    //     console.error('loadObserveStatementGetVo => error', error)
+    //   }
+    // },
+    // initEcharts({ key, value }) {
+    //   const myChart = echarts.init(document.getElementById('echarts'))
+    //   myChart.setOption({
+    //     grid: {
+    //       top: 30,
+    //       right: 50,
+    //       bottom: 30
+    //     },
+    //     xAxis: {
+    //       type: 'category',
+    //       name: '日期',
+    //       boundaryGap: false,
+    //       data: key,
+    //       nameTextStyle: {
+    //         color: '#666666'
+    //       },
+    //       axisLabel: {
+    //         rotate: '20',
+    //         align: 'center',
+    //         margin: '18',
+    //         interval: 0
+    //       }
+    //     },
+    //     yAxis: {
+    //       type: 'value',
+    //       name: '人数',
+    //       nameTextStyle: {
+    //         color: '#666666'
+    //       },
+    //       splitLine: {
+    //         lineStyle: {
+    //           color: '#EFEFEF'
+    //         }
+    //       }
+    //     },
+    //     series: [
+    //       {
+    //         name: '销量',
+    //         type: 'line',
+    //         smooth: true,
+    //         areaStyle: {},
+    //         itemStyle: {
+    //           color: '#3695f7'
+    //         },
+    //         label: {
+    //           show: true
+    //         },
+    //         data: value
+    //       }
+    //     ]
+    //   })
+    // },
     onConfirm(value) {
       this.value = value
       this.showPicker = false

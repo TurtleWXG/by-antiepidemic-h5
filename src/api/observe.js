@@ -15,3 +15,27 @@ export function loadObserveStatementGetVo(placeName) {
     method: 'GET'
   })
 }
+
+export function loadHotelIsolateStateList(params) {
+  return axios.request({
+    url: '/byfy/HotelIsolateState/h5list',
+    method: 'GET',
+    params
+  })
+}
+
+export function loadStreetIsolateStateList(params) {
+  return axios.request({
+    url: '/byfy/StreetIsolateState/h5list',
+    method: 'GET',
+    params
+  })
+}
+
+export function loadStreetAntiepidemicStateList(params) {
+  return axios.request({
+    url: '/byfy/StreetAntiepidemicState/h5list',
+    method: 'GET',
+    params
+  })
+}
