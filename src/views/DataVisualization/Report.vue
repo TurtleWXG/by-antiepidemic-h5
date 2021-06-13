@@ -1,3 +1,4 @@
+// eslint-disable-next-line prettier/prettier
 <template>
   <van-overlay :show="show" @click="hideOverlay">
     <div class="wrapper" @click.stop>
@@ -166,6 +167,7 @@ export default {
   ul li {
     margin: 10px 0;
     font-size: 15px;
+    line-height: 25px;
     span {
       font-size: 16px;
       font-weight: 500;
