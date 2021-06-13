@@ -1,7 +1,7 @@
 <template>
   <div class="view-container">
     <vue-scroll class="scroller">
-      <div class="select" @click="showPicker = true">
+      <!-- <div class="select" @click="showPicker = true">
         {{ value }}
         <van-icon name="arrow-down" />
       </div>
@@ -30,6 +30,19 @@
         <div class="detail-item">
           <label>累计密切接触者(居家隔离)</label>
           <span>--</span>
+        </div>
+      </div> -->
+      <div v-for="item in 10" :key="item" class="item">
+        <div class="title">
+          目前在管人数
+        </div>
+        <div class="sub-title">
+          <p>区内</p>
+          <p>区外</p>
+        </div>
+        <div class="sub-value">
+          <p>1</p>
+          <p>2</p>
         </div>
       </div>
     </vue-scroll>
@@ -91,7 +104,7 @@ export default {
     }
   },
   mounted() {
-    this.init()
+    // this.init()
   },
   methods: {
     async init() {
@@ -249,6 +262,41 @@ export default {
     .detail-item + .detail-item {
       margin-top: 10px;
     }
+  }
+  .item {
+    width: 90%;
+    min-height: 100px;
+    margin: 15px auto;
+    padding: 0 20px 15px;
+    box-sizing: border-box;
+    box-shadow: 0 1px 10px rgba($color: #333, $alpha: 0.1);
+    border-radius: 6px;
+    .title {
+      font-size: 15px;
+      font-weight: 500;
+      text-align: center;
+      border-bottom: 1px solid #ebeef5;
+      padding: 7px 0;
+    }
+    .sub-title,
+    .sub-value {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      font-size: 14px;
+      p {
+        width: 40%;
+        padding: 7px 0;
+        text-align: center;
+        border-bottom: 1px solid #ebeef5;
+      }
+    }
+    .sub-value p {
+      border: none;
+    }
+  }
+  .item:first-child {
+    margin-top: 30px;
   }
 }
 </style>
