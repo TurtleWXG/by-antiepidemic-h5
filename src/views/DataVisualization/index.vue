@@ -55,7 +55,7 @@ export default {
   },
   methods: {
     handleSelectTab(name) {
-      this.$refs['shade'].style.left = name * 172 + 'px'
+      this.$refs['shade'].style.left = name * this.$refs['shade'].offsetWidth + 'px'
       this.selectType.map(item => {
         if (name === item.name) {
           item.selected = true
