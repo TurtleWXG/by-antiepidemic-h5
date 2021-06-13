@@ -4,86 +4,61 @@
       <van-swipe-item>
         <div class="view-container">
           <vue-scroll class="scroller">
-            <div class="outside-title">密接者</div>
+            <div class="outside-title">人员排查情况</div>
             <div class="select" @click="showPicker = true">
               {{ value }}
               <van-icon name="arrow-down" />
             </div>
-            <!-- 在管人数 -->
+            <!-- 黄码人员 -->
             <div class="item">
-              <div class="title">目前在管人数</div>
+              <div class="title">黄码人员</div>
               <div class="sub-title">
-                <p>区内</p>
-                <p>区外</p>
+                <p>当日排除人员</p>
+                <p>累计排除人员</p>
               </div>
               <div class="sub-value">
                 <p>1</p>
                 <p>2</p>
               </div>
             </div>
-            <!-- 管理人数 -->
+            <!-- 重点人群 -->
             <div class="item">
-              <div class="title">管理人数</div>
+              <div class="title">重点人群</div>
               <div class="sub-title">
-                <p>当日新增</p>
-                <p>累计</p>
+                <p>当日新增人员</p>
+                <p>累计排除人员</p>
               </div>
-              <div class="third-title">
-                <p>区内</p>
-                <p>区外</p>
-                <p>区外</p>
-                <p>区内</p>
-              </div>
-              <div class="third-value">
+              <div class="sub-value">
                 <p>1</p>
                 <p>2</p>
-                <p>3</p>
-                <p>4</p>
               </div>
             </div>
-            <!-- 转为医学留观数 -->
+            <!-- 公安排查 -->
             <div class="item">
-              <div class="title">
-                转为医学留观数
-                <span>※核酸检测阳性、疑似病例</span>
-              </div>
+              <div class="title">公安排查</div>
               <div class="sub-title">
-                <p>当日新增</p>
-                <p>累计</p>
+                <p>当日新增人员</p>
+                <p>累计排除人员</p>
+                <p>待排查人数</p>
               </div>
-              <div class="third-title">
-                <p>区内</p>
-                <p>区外</p>
-                <p>区外</p>
-                <p>区内</p>
-              </div>
-              <div class="third-value">
+              <div class="sub-value">
                 <p>1</p>
                 <p>2</p>
-                <p>3</p>
-                <p>4</p>
+                <p>2</p>
               </div>
             </div>
-            <!-- 解除观察数 -->
+            <!-- 三人小组排查 -->
             <div class="item">
-              <div class="title">
-                解除观察数
-              </div>
+              <div class="title">三人小组排查</div>
               <div class="sub-title">
-                <p>当日新增</p>
-                <p>累计</p>
+                <p>当日新增人员</p>
+                <p>累计排除人员</p>
+                <p>待排查人数</p>
               </div>
-              <div class="third-title">
-                <p>区内</p>
-                <p>区外</p>
-                <p>区外</p>
-                <p>区内</p>
-              </div>
-              <div class="third-value">
+              <div class="sub-value">
                 <p>1</p>
                 <p>2</p>
-                <p>3</p>
-                <p>4</p>
+                <p>2</p>
               </div>
             </div>
           </vue-scroll>
@@ -92,86 +67,43 @@
       <van-swipe-item>
         <div class="view-container">
           <vue-scroll class="scroller">
-            <div class="outside-title">次密接者</div>
+            <div class="outside-title">核酸检测、疫苗接种情况</div>
             <div class="select" @click="showPicker = true">
               {{ value }}
               <van-icon name="arrow-down" />
             </div>
-            <!-- 在管人数 -->
+            <!-- 核酸检测 -->
             <div class="item">
-              <div class="title">目前在管人数</div>
+              <div class="title">核酸检测</div>
               <div class="sub-title">
-                <p>区内</p>
-                <p>区外</p>
+                <p>当日新增人数</p>
+                <p>累计检测</p>
+                <p>已出结果</p>
+                <p>累计检测阳性</p>
               </div>
               <div class="sub-value">
                 <p>1</p>
                 <p>2</p>
-              </div>
-            </div>
-            <!-- 管理人数 -->
-            <div class="item">
-              <div class="title">管理人数</div>
-              <div class="sub-title">
-                <p>当日新增</p>
-                <p>累计</p>
-              </div>
-              <div class="third-title">
-                <p>区内</p>
-                <p>区外</p>
-                <p>区外</p>
-                <p>区内</p>
-              </div>
-              <div class="third-value">
-                <p>1</p>
-                <p>2</p>
                 <p>3</p>
                 <p>4</p>
               </div>
             </div>
-            <!-- 转为医学留观数 -->
+            <!-- 疫苗接种 -->
             <div class="item">
-              <div class="title">
-                转为医学留观数
-                <span>※核酸检测阳性、疑似病例</span>
-              </div>
+              <div class="title">疫苗接种</div>
               <div class="sub-title">
                 <p>当日新增</p>
                 <p>累计</p>
               </div>
-              <div class="third-title">
-                <p>区内</p>
-                <p>区外</p>
-                <p>区外</p>
-                <p>区内</p>
-              </div>
-              <div class="third-value">
-                <p>1</p>
-                <p>2</p>
-                <p>3</p>
-                <p>4</p>
-              </div>
-            </div>
-            <!-- 解除观察数 -->
-            <div class="item">
-              <div class="title">
-                解除观察数
-              </div>
               <div class="sub-title">
-                <p>当日新增</p>
-                <p>累计</p>
+                <p>当日接种人数</p>
+                <p>累计接种剂次</p>
+                <p>累计接种人数</p>
               </div>
-              <div class="third-title">
-                <p>区内</p>
-                <p>区外</p>
-                <p>区外</p>
-                <p>区内</p>
-              </div>
-              <div class="third-value">
+              <div class="sub-value">
                 <p>1</p>
                 <p>2</p>
                 <p>3</p>
-                <p>4</p>
               </div>
             </div>
           </vue-scroll>
@@ -242,23 +174,36 @@ export default {
   name: 'Hotel',
   data() {
     return {
-      value: '空港假日酒店',
+      value: '全区',
       info: {},
       showPicker: false,
       columns: [
-        '空港假日酒店',
-        '永平街绿巢精品酒店',
-        '石井七天酒店金碧新城店',
-        '广州汇德酒店',
-        '锦江之星',
-        '嘉禾文星酒店',
-        '松洲维也纳酒店',
-        '嘉禾维也纳智好酒店',
-        '云城维也纳酒店',
-        '黄石汉庭酒店',
-        '京溪维也纳',
-        '石井翡丽酒店',
-        '同裕国际酒店'
+        '全区',
+        '江高',
+        '人和',
+        '太和',
+        '钟落潭',
+        '三元里',
+        '松洲',
+        '景泰',
+        '黄石',
+        '同德',
+        '棠景',
+        '新市',
+        '同和',
+        '京溪',
+        '永平',
+        '均禾',
+        '嘉禾',
+        '石井',
+        '金沙',
+        '云城',
+        '鹤龙',
+        '白云湖',
+        '石门',
+        '大源',
+        '龙归',
+        '外区'
       ]
     }
   },

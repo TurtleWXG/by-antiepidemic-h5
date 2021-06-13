@@ -1,5 +1,5 @@
 <template>
-  <van-swipe class="my-swipe">
+  <van-swipe class="my-swipe" :loop="false">
     <van-swipe-item>
       <div class="view-container">
         <vue-scroll class="scroller">

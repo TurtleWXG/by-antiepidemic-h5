@@ -7,6 +7,9 @@
     <template v-if="nowSelectType === 1">
       <Hotel />
     </template>
+    <template v-if="nowSelectType === 2">
+      <Person />
+    </template>
     <div class="view-tabs">
       <div ref="shade" class="shade"></div>
       <div
@@ -23,7 +26,6 @@
 
 <script>
 import Street from './Street.vue'
-import Hotel from './Hotel.vue'
 export default {
   name: 'DataVisualization',
   data() {
@@ -40,10 +42,15 @@ export default {
           value: '酒店',
           icon: 'icon-jiudian',
           selected: false
+        },
+        {
+          name: 2,
+          value: '人员情况',
+          icon: 'icon-zhengjian',
+          selected: false
         }
       ],
-      showPicker: false,
-      columns: ['杭州', '宁波', '温州', '绍兴', '湖州', '嘉兴', '金华', '衢州']
+      showPicker: false
     }
   },
   computed: {
@@ -68,7 +75,8 @@ export default {
   },
   components: {
     Street,
-    Hotel
+    Hotel: () => import(/* webpackChunkName: "hotel" */ './Hotel.vue'),
+    Person: () => import(/* webpackChunkName: "person" */ './Person.vue')
   }
 }
 </script>
@@ -159,7 +167,7 @@ export default {
     border-radius: 30px;
     .shade {
       position: absolute;
-      width: 172px;
+      width: 33.3%;
       height: 50px;
       background: #3695f7;
       border-radius: 30px;
@@ -167,7 +175,7 @@ export default {
       transition: left 0.5s;
     }
     .tab {
-      width: 172px;
+      flex: 1;
       height: 50px;
       line-height: 50px;
       text-align: center;
