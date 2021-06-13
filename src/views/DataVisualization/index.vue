@@ -1,6 +1,11 @@
 <template>
   <div class="view">
-    <div class="view-bg"></div>
+    <div class="view-bg">
+      <div class="view-btn" @click="showReport = true">
+        疫情专报
+        <img src="@/assets/point.png" />
+      </div>
+    </div>
     <template v-if="nowSelectType === 0">
       <Street />
     </template>
@@ -18,12 +23,14 @@
         <span><i :class="['iconfont', item.icon]"></i>{{ item.value }}</span>
       </div>
     </div>
+    <Report :show="showReport" @close="dialogClose" />
   </div>
 </template>
 
 <script>
 import Street from './Street.vue'
 import Hotel from './Hotel.vue'
+import Report from './Report.vue'
 export default {
   name: 'DataVisualization',
   data() {
@@ -43,7 +50,8 @@ export default {
         }
       ],
       showPicker: false,
-      columns: ['杭州', '宁波', '温州', '绍兴', '湖州', '嘉兴', '金华', '衢州']
+      columns: ['杭州', '宁波', '温州', '绍兴', '湖州', '嘉兴', '金华', '衢州'],
+      showReport: false
     }
   },
   computed: {
@@ -64,11 +72,15 @@ export default {
         }
         return item
       })
+    },
+    dialogClose() {
+      this.showReport = false
     }
   },
   components: {
     Street,
-    Hotel
+    Hotel,
+    Report
   }
 }
 </script>
@@ -76,6 +88,22 @@ export default {
 .view {
   height: 100vh;
   background-color: #fff;
+  &-btn {
+    position: fixed;
+    font-size: 16px;
+    color: #d0d9e3;
+    top: 60px;
+    right: 5px;
+    padding-bottom: 3px;
+    border-bottom: 1px solid #d0d9e3;
+    img {
+      width: 24px;
+      height: 24px;
+      vertical-align: middle;
+      position: relative;
+      top: -1px;
+    }
+  }
   &-bg {
     width: 100%;
     height: 429px;

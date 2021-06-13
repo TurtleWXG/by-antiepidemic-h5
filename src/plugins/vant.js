@@ -14,7 +14,8 @@ import {
   Toast,
   Icon,
   Swipe,
-  SwipeItem
+  SwipeItem,
+  Overlay
 } from 'vant'
 
 Vue.use(Button)
@@ -32,6 +33,7 @@ Vue.use(Toast)
 Vue.use(Icon)
 Vue.use(Swipe)
 Vue.use(SwipeItem)
+Vue.use(Overlay)
 
 // 允许同时存在多个 Toast
 Toast.allowMultiple()
