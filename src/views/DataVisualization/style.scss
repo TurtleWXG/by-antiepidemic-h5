@@ -13,23 +13,6 @@
   width: 100%;
   height: 93%;
   background: #ffffff;
-  &::before {
-    content: '密切接触者趋势';
-    position: absolute;
-    // top: -15px;
-    left: 50%;
-    width: 226px;
-    height: 48px;
-    font-size: 18px;
-    font-weight: 600;
-    color: #e8502c;
-    text-align: center;
-    line-height: 40px;
-    // background: url('~@/assets/tips.png');
-    background-size: 100% 100%;
-    transform: translateX(-50%);
-    z-index: 10;
-  }
   .select {
     height: 22px;
     margin-top: 40px;
@@ -67,10 +50,19 @@
       margin-top: 10px;
     }
   }
+  .outside-title {
+    width: 100%;
+    height: 48px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #e8502c;
+    text-align: center;
+    line-height: 40px;
+  }
   .item {
     width: 90%;
     min-height: 100px;
-    margin: 15px auto;
+    margin: 0 auto 15px;
     padding: 0 20px 15px;
     box-sizing: border-box;
     box-shadow: 0 1px 10px rgba($color: #333, $alpha: 0.1);
@@ -81,25 +73,35 @@
       text-align: center;
       border-bottom: 1px solid #ebeef5;
       padding: 7px 0;
+      span {
+        font-size: 12px;
+        color: #999;
+        display: block;
+      }
     }
     .sub-title,
-    .sub-value {
+    .sub-value,
+    .third-title,
+    .third-value {
       display: flex;
       justify-content: space-around;
       align-items: center;
       font-size: 14px;
       p {
-        width: 40%;
+        width: 45%;
         padding: 7px 0;
         text-align: center;
         border-bottom: 1px solid #ebeef5;
       }
     }
-    .sub-value p {
+    .third-title {
+      p {
+        width: 20%;
+      }
+    }
+    .sub-value p,
+    .third-value p {
       border: none;
     }
-  }
-  .item:first-child {
-    margin-top: 30px;
   }
 }
