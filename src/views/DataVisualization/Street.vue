@@ -1,214 +1,209 @@
 <template>
-  <van-swipe class="my-swipe" :loop="false">
-    <van-swipe-item>
-      <div class="view-container">
-        <vue-scroll class="scroller">
-          <div class="outside-title">密接者</div>
-          <!-- 在管人数 -->
-          <div class="item">
-            <div class="title">目前在管人数</div>
-            <div class="sub-title">
-              <p>区内</p>
-              <p>区外</p>
+  <div>
+    <van-swipe class="my-swipe">
+      <van-swipe-item>
+        <div class="view-container">
+          <vue-scroll class="scroller">
+            <div class="outside-title">密接者</div>
+            <div class="select" @click="showPicker = true">
+              {{ value }}
+              <van-icon name="arrow-down" />
             </div>
-            <div class="sub-value">
-              <p>1</p>
-              <p>2</p>
+            <!-- 当日新增人数 -->
+            <div class="item">
+              <div class="title">当日新增人数</div>
+              <div class="sub-title">
+                <p>区内</p>
+                <p>区外</p>
+              </div>
+              <div class="sub-value">
+                <p>1</p>
+                <p>2</p>
+              </div>
             </div>
+            <!-- 累计 -->
+            <div class="item">
+              <div class="title">累计</div>
+              <div class="sub-title">
+                <p>区内</p>
+                <p>区外</p>
+              </div>
+              <div class="sub-value">
+                <p>1</p>
+                <p>2</p>
+              </div>
+            </div>
+            <!-- 当日解除人数 -->
+            <div class="item">
+              <div class="title">当日解除人数</div>
+              <div class="sub-title">
+                <p>区内</p>
+                <p>区外</p>
+              </div>
+              <div class="sub-value">
+                <p>1</p>
+                <p>2</p>
+              </div>
+            </div>
+            <!-- 累计解除人数 -->
+            <div class="item">
+              <div class="title">累计解除人数</div>
+              <div class="sub-title">
+                <p>区内</p>
+                <p>区外</p>
+              </div>
+              <div class="sub-value">
+                <p>1</p>
+                <p>2</p>
+              </div>
+            </div>
+            <!-- 现有 -->
+            <div class="item">
+              <div class="title">现有</div>
+              <div class="sub-title">
+                <p style="width: 70%">区内</p>
+                <p style="width: 20%">区外</p>
+              </div>
+              <div class="third-title">
+                <p>酒店隔离人数</p>
+                <p>居家隔离人数</p>
+                <p>处理中人数</p>
+                <p>酒店隔离人数</p>
+              </div>
+              <div class="third-value">
+                <p>1</p>
+                <p>2</p>
+                <p>3</p>
+                <p>4</p>
+              </div>
+            </div>
+          </vue-scroll>
+        </div>
+      </van-swipe-item>
+      <van-swipe-item>
+        <div class="view-container">
+          <vue-scroll class="scroller">
+            <div class="outside-title">次密接者</div>
+            <div class="select" @click="showPicker = true">
+              {{ value }}
+              <van-icon name="arrow-down" />
+            </div>
+            <!-- 当日新增人数 -->
+            <div class="item">
+              <div class="title">当日新增人数</div>
+              <div class="sub-title">
+                <p>区内</p>
+                <p>区外</p>
+              </div>
+              <div class="sub-value">
+                <p>1</p>
+                <p>2</p>
+              </div>
+            </div>
+            <!-- 累计 -->
+            <div class="item">
+              <div class="title">累计</div>
+              <div class="sub-title">
+                <p>区内</p>
+                <p>区外</p>
+              </div>
+              <div class="sub-value">
+                <p>1</p>
+                <p>2</p>
+              </div>
+            </div>
+            <!-- 当日解除人数 -->
+            <div class="item">
+              <div class="title">当日解除人数</div>
+              <div class="sub-title">
+                <p>区内</p>
+                <p>区外</p>
+              </div>
+              <div class="sub-value">
+                <p>1</p>
+                <p>2</p>
+              </div>
+            </div>
+            <!-- 累计解除人数 -->
+            <div class="item">
+              <div class="title">累计解除人数</div>
+              <div class="sub-title">
+                <p>区内</p>
+                <p>区外</p>
+              </div>
+              <div class="sub-value">
+                <p>1</p>
+                <p>2</p>
+              </div>
+            </div>
+            <!-- 现有 -->
+            <div class="item">
+              <div class="title">现有</div>
+              <div class="sub-title">
+                <p style="width: 70%">区内</p>
+                <p style="width: 20%">区外</p>
+              </div>
+              <div class="third-title">
+                <p>酒店隔离人数</p>
+                <p>居家隔离人数</p>
+                <p>处理中人数</p>
+                <p>酒店隔离人数</p>
+              </div>
+              <div class="third-value">
+                <p>1</p>
+                <p>2</p>
+                <p>3</p>
+                <p>4</p>
+              </div>
+            </div>
+          </vue-scroll>
+        </div>
+      </van-swipe-item>
+    </van-swipe>
+    <van-popup v-model="showPicker" round position="bottom">
+      <van-picker show-toolbar :columns="columns" @cancel="showPicker = false" @confirm="onConfirm" />
+    </van-popup>
+    <!-- <div class="view-container">
+      <vue-scroll class="scroller">
+        <div class="select" @click="showPicker = true">
+          {{ value }}
+          <van-icon name="arrow-down" />
+        </div>
+        <div id="echarts" class="echarts-view"></div>
+        <div class="detail">
+          <div class="detail-item">
+            <label>当日新增人数</label>
+            <span>{{ info.intimateAddCount }}</span>
           </div>
-          <!-- 管理人数 -->
-          <div class="item">
-            <div class="title">管理人数</div>
-            <div class="sub-title">
-              <p>当日新增</p>
-              <p>累计</p>
-            </div>
-            <div class="third-title">
-              <p>区内</p>
-              <p>区外</p>
-              <p>区外</p>
-              <p>区内</p>
-            </div>
-            <div class="third-value">
-              <p>1</p>
-              <p>2</p>
-              <p>3</p>
-              <p>4</p>
-            </div>
+          <div class="detail-item">
+            <label>当日解除观察人数</label>
+            <span>--</span>
           </div>
-          <!-- 转为医学留观数 -->
-          <div class="item">
-            <div class="title">
-              转为医学留观数
-              <span>※核酸检测阳性、疑似病例</span>
-            </div>
-            <div class="sub-title">
-              <p>当日新增</p>
-              <p>累计</p>
-            </div>
-            <div class="third-title">
-              <p>区内</p>
-              <p>区外</p>
-              <p>区外</p>
-              <p>区内</p>
-            </div>
-            <div class="third-value">
-              <p>1</p>
-              <p>2</p>
-              <p>3</p>
-              <p>4</p>
-            </div>
+          <div class="detail-item">
+            <label>现有密切接触者(集中隔离)</label>
+            <span>{{ info.intimateIsolateInHotelCount }}</span>
           </div>
-          <!-- 解除观察数 -->
-          <div class="item">
-            <div class="title">
-              解除观察数
-            </div>
-            <div class="sub-title">
-              <p>当日新增</p>
-              <p>累计</p>
-            </div>
-            <div class="third-title">
-              <p>区内</p>
-              <p>区外</p>
-              <p>区外</p>
-              <p>区内</p>
-            </div>
-            <div class="third-value">
-              <p>1</p>
-              <p>2</p>
-              <p>3</p>
-              <p>4</p>
-            </div>
+          <div class="detail-item">
+            <label>现有密切接触者(居家隔离)</label>
+            <span>{{ info.intimateIsolateInOtherCount }}</span>
           </div>
-        </vue-scroll>
-      </div>
-    </van-swipe-item>
-    <van-swipe-item>
-      <!-- <div class="view-container">
-        <vue-scroll class="scroller">
-          <div class="select" @click="showPicker = true">
-            {{ value }}
-            <van-icon name="arrow-down" />
+          <div class="detail-item">
+            <label>累计密切接触者(集中隔离)</label>
+            <span>{{
+              info.intimateAddCount + info.intimateIsolateInHotelCount + info.intimateIsolateInOtherCount
+            }}</span>
           </div>
-          <div id="echarts" class="echarts-view"></div>
-          <div class="detail">
-            <div class="detail-item">
-              <label>当日新增人数</label>
-              <span>{{ info.intimateAddCount }}</span>
-            </div>
-            <div class="detail-item">
-              <label>当日解除观察人数</label>
-              <span>--</span>
-            </div>
-            <div class="detail-item">
-              <label>现有密切接触者(集中隔离)</label>
-              <span>{{ info.intimateIsolateInHotelCount }}</span>
-            </div>
-            <div class="detail-item">
-              <label>现有密切接触者(居家隔离)</label>
-              <span>{{ info.intimateIsolateInOtherCount }}</span>
-            </div>
-            <div class="detail-item">
-              <label>累计密切接触者(集中隔离)</label>
-              <span>{{
-                info.intimateAddCount + info.intimateIsolateInHotelCount + info.intimateIsolateInOtherCount
-              }}</span>
-            </div>
-            <div class="detail-item">
-              <label>累计密切接触者(居家隔离)</label>
-              <span>--</span>
-            </div>
+          <div class="detail-item">
+            <label>累计密切接触者(居家隔离)</label>
+            <span>--</span>
           </div>
-        </vue-scroll>
-        <van-popup v-model="showPicker" round position="bottom">
-          <van-picker show-toolbar :columns="columns" @cancel="showPicker = false" @confirm="onConfirm" />
-        </van-popup>
-      </div> -->
-      <div class="view-container">
-        <vue-scroll class="scroller">
-          <div class="outside-title">次密接者</div>
-          <!-- 在管人数 -->
-          <div class="item">
-            <div class="title">目前在管人数</div>
-            <div class="sub-title">
-              <p>区内</p>
-              <p>区外</p>
-            </div>
-            <div class="sub-value">
-              <p>1</p>
-              <p>2</p>
-            </div>
-          </div>
-          <!-- 管理人数 -->
-          <div class="item">
-            <div class="title">管理人数</div>
-            <div class="sub-title">
-              <p>当日新增</p>
-              <p>累计</p>
-            </div>
-            <div class="third-title">
-              <p>区内</p>
-              <p>区外</p>
-              <p>区外</p>
-              <p>区内</p>
-            </div>
-            <div class="third-value">
-              <p>1</p>
-              <p>2</p>
-              <p>3</p>
-              <p>4</p>
-            </div>
-          </div>
-          <!-- 转为医学留观数 -->
-          <div class="item">
-            <div class="title">
-              转为医学留观数
-              <span>※核酸检测阳性、疑似病例</span>
-            </div>
-            <div class="sub-title">
-              <p>当日新增</p>
-              <p>累计</p>
-            </div>
-            <div class="third-title">
-              <p>区内</p>
-              <p>区外</p>
-              <p>区外</p>
-              <p>区内</p>
-            </div>
-            <div class="third-value">
-              <p>1</p>
-              <p>2</p>
-              <p>3</p>
-              <p>4</p>
-            </div>
-          </div>
-          <!-- 解除观察数 -->
-          <div class="item">
-            <div class="title">
-              解除观察数
-            </div>
-            <div class="sub-title">
-              <p>当日新增</p>
-              <p>累计</p>
-            </div>
-            <div class="third-title">
-              <p>区内</p>
-              <p>区外</p>
-              <p>区外</p>
-              <p>区内</p>
-            </div>
-            <div class="third-value">
-              <p>1</p>
-              <p>2</p>
-              <p>3</p>
-              <p>4</p>
-            </div>
-          </div>
-        </vue-scroll>
-      </div>
-    </van-swipe-item>
-  </van-swipe>
+        </div>
+      </vue-scroll>
+      <van-popup v-model="showPicker" round position="bottom">
+        <van-picker show-toolbar :columns="columns" @cancel="showPicker = false" @confirm="onConfirm" />
+      </van-popup>
+    </div> -->
+  </div>
 </template>
 
 <script>
