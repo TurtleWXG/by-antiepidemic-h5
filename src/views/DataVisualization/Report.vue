@@ -1,12 +1,12 @@
 // eslint-disable-next-line prettier/prettier
 <template>
-  <van-overlay :show="show" @click="hideOverlay">
+  <div v-if="show" class="dialog" @click="hideOverlay">
     <div class="wrapper" @click.stop>
       <div class="title">
         5.20疫情专报
       </div>
       <div class="time">
-        {{ street.yearStr }}年{{ street.yearStr }}月{{ street.dayStr }}日
+        {{ date }}
         <!-- （截至{{ hour }}时） -->
       </div>
       <ul>
@@ -61,7 +61,7 @@
       </ul>
       <div class="closeBtn" @click="hideOverlay">关闭</div>
     </div>
-  </van-overlay>
+  </div>
 </template>
 
 <script>
@@ -85,12 +85,13 @@ export default {
         this.loadStreetAntiepidemicStateList()
         this.loadHotelIsolateStateList()
         this.loadStreetIsolateStateList()
+        this.getDay()
       }
     }
   },
   data() {
     return {
-      time: '2021年6月X日',
+      date: '',
       hour: 'X',
       person: {},
       hotel: {},
@@ -99,6 +100,13 @@ export default {
     }
   },
   methods: {
+    getDay() {
+      let date = new Date()
+      let year = date.getFullYear()
+      let month = date.getMonth() + 1
+      let day = date.getDate()
+      this.date = year + '年' + month + '月' + day + '日'
+    },
     hideOverlay() {
       this.$emit('close')
     },
@@ -133,6 +141,15 @@ export default {
 </script>
 
 <style lang="scss">
+.dialog {
+  width: 100vw;
+  height: 100vh;
+  background: rgba($color: #000000, $alpha: 0.6);
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9999;
+}
 .wrapper {
   width: 100vw;
   height: 90vh;
@@ -185,8 +202,5 @@ export default {
     background-color: #1989fa;
     margin: 10px auto 0;
   }
-}
-.van-overlay {
-  z-index: 9999;
 }
 </style>
