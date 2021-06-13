@@ -12,6 +12,9 @@
     <template v-if="nowSelectType === 1">
       <Hotel />
     </template>
+    <template v-if="nowSelectType === 2">
+      <Person />
+    </template>
     <div class="view-tabs">
       <div ref="shade" class="shade"></div>
       <div
@@ -29,7 +32,6 @@
 
 <script>
 import Street from './Street.vue'
-import Hotel from './Hotel.vue'
 import Report from './Report.vue'
 export default {
   name: 'DataVisualization',
@@ -47,6 +49,12 @@ export default {
           value: '酒店',
           icon: 'icon-jiudian',
           selected: false
+        },
+        {
+          name: 2,
+          value: '人员情况',
+          icon: 'icon-zhengjian',
+          selected: false
         }
       ],
       showPicker: false,
@@ -63,7 +71,7 @@ export default {
   },
   methods: {
     handleSelectTab(name) {
-      this.$refs['shade'].style.left = name * 172 + 'px'
+      this.$refs['shade'].style.left = name * this.$refs['shade'].offsetWidth + 'px'
       this.selectType.map(item => {
         if (name === item.name) {
           item.selected = true
@@ -79,8 +87,9 @@ export default {
   },
   components: {
     Street,
-    Hotel,
-    Report
+    Report,
+    Hotel: () => import(/* webpackChunkName: "hotel" */ './Hotel.vue'),
+    Person: () => import(/* webpackChunkName: "person" */ './Person.vue')
   }
 }
 </script>
@@ -187,7 +196,7 @@ export default {
     border-radius: 30px;
     .shade {
       position: absolute;
-      width: 172px;
+      width: 33.3%;
       height: 50px;
       background: #3695f7;
       border-radius: 30px;
@@ -195,7 +204,7 @@ export default {
       transition: left 0.5s;
     }
     .tab {
-      width: 172px;
+      flex: 1;
       height: 50px;
       line-height: 50px;
       text-align: center;

@@ -6,84 +6,61 @@
       <van-swipe-item>
         <div class="view-container">
           <vue-scroll class="scroller">
-            <div class="outside-title">密接者</div>
+            <div class="outside-title">人员排查情况</div>
             <div class="select" @click="showPicker = true">
               {{ value.name }}
               <van-icon name="arrow-down" />
             </div>
-            <!-- 在管人数 -->
+            <!-- 黄码人员 -->
             <div class="item">
-              <div class="title">目前在管人数</div>
+              <div class="title">黄码人员</div>
               <div class="sub-title">
-                <p>区内</p>
-                <p>区外</p>
+                <p>当日排除人员</p>
+                <p>累计排除人员</p>
               </div>
               <div class="sub-value">
-                <p>{{ info.intimateInnerManageCount }}</p>
-                <p>{{ info.intimateOuterManageCount }}</p>
+                <p>{{ info.yellowDayExcludeCount }}</p>
+                <p>{{ info.yellowExcludeTotal }}</p>
               </div>
             </div>
-            <!-- 管理人数 -->
+            <!-- 重点人群 -->
             <div class="item">
-              <div class="title">管理人数</div>
+              <div class="title">重点人群</div>
               <div class="sub-title">
-                <p>当日新增</p>
-                <p>累计</p>
+                <p>当日新增人员</p>
+                <p>累计排除人员</p>
               </div>
-              <div class="third-title">
-                <p>区内</p>
-                <p>区外</p>
-                <p>区外</p>
-                <p>区内</p>
-              </div>
-              <div class="third-value">
-                <p>{{ info.intimateInnerManageAddCount }}</p>
-                <p>{{ info.intimateOuterManageAddCount }}</p>
-                <p>{{ info.intimateInnerManageTotal }}</p>
-                <p>{{ info.intimateOuterManageTotal }}</p>
+              <div class="sub-value">
+                <p>{{ info.importantDayAddCount }}</p>
+                <p>{{ info.importantExcludeTotal }}</p>
               </div>
             </div>
-            <!-- 转为医学留观数 -->
+            <!-- 公安排查 -->
             <div class="item">
-              <div class="title">
-                转为医学留观数
-                <span>※核酸检测阳性、疑似病例</span>
-              </div>
+              <div class="title">公安排查</div>
               <div class="sub-title">
-                <p>当日新增</p>
-                <p>累计</p>
+                <p>当日新增人员</p>
+                <p>累计排除人员</p>
+                <p>待排查人数</p>
               </div>
-              <div class="third-title">
-                <p>区内</p>
-                <p>区外</p>
-                <p>区外</p>
-                <p>区内</p>
-              </div>
-              <div class="third-value">
-                <p>{{ info.intimateInnerObserveAddCount }}</p>
-                <p>{{ info.intimateOuterObserveAddCount }}</p>
-                <p>{{ info.intimateInnerObserveTotal }}</p>
-                <p>{{ info.intimateOuterObserveTotal }}</p>
+              <div class="sub-value">
+                <p>{{ info.policeDayExcludeCount }}</p>
+                <p>{{ info.policeExcludeTotal }}</p>
+                <p>{{ info.policeWaitExcludeCount }}</p>
               </div>
             </div>
-            <!-- 解除观察数 -->
+            <!-- 三人小组排查 -->
             <div class="item">
-              <div class="title">解除观察数</div>
+              <div class="title">三人小组排查</div>
               <div class="sub-title">
-                <p>当日新增</p>
-                <p>累计</p>
+                <p>当日新增人员</p>
+                <p>累计排除人员</p>
+                <p>待排查人数</p>
               </div>
-              <div class="third-title">
-                <p>区内</p>
-                <p>区外</p>
-                <p>区外</p>
-                <p>区内</p>
-              </div>
-              <div class="third-value">
-                <p>{{ info.intimateInnerRelieveAddCount }}</p>
-                <p>{{ info.intimateOuterRelieveAddCount }}</p>
-                <p>{{ info.intimateInnerRelieveTotal }}</p>
-                <p>{{ info.intimateOuterRelieveTotal }}</p>
+              <div class="sub-value">
+                <p>{{ info.thirdDayExcludeCount }}</p>
+                <p>{{ info.thirdExcludeTotal }}</p>
+                <p>{{ info.thirdWaitExcludeCount }}</p>
               </div>
             </div>
           </vue-scroll>
@@ -92,84 +69,43 @@
       <van-swipe-item>
         <div class="view-container">
           <vue-scroll class="scroller">
-            <div class="outside-title">次密接者</div>
+            <div class="outside-title">核酸检测、疫苗接种情况</div>
             <div class="select" @click="showPicker = true">
               {{ value.name }}
               <van-icon name="arrow-down" />
             </div>
-            <!-- 在管人数 -->
+            <!-- 核酸检测 -->
             <div class="item">
-              <div class="title">目前在管人数</div>
+              <div class="title">核酸检测</div>
               <div class="sub-title">
-                <p>区内</p>
-                <p>区外</p>
+                <p>当日新增人数</p>
+                <p>累计检测</p>
+                <p>已出结果</p>
+                <p>累计检测阳性</p>
               </div>
               <div class="sub-value">
-                <p>{{ info.minorInnerManageCount }}</p>
-                <p>{{ info.minorOuterManageCount }}</p>
+                <p>{{ info.testDayAddCount }}</p>
+                <p>{{ info.testTotal }}</p>
+                <p>{{ info.testResultTotal }}</p>
+                <p>{{ info.testPositiveTotal }}</p>
               </div>
             </div>
-            <!-- 管理人数 -->
+            <!-- 疫苗接种 -->
             <div class="item">
-              <div class="title">管理人数</div>
+              <div class="title">疫苗接种</div>
               <div class="sub-title">
                 <p>当日新增</p>
                 <p>累计</p>
               </div>
-              <div class="third-title">
-                <p>区内</p>
-                <p>区外</p>
-                <p>区外</p>
-                <p>区内</p>
-              </div>
-              <div class="third-value">
-                <p>{{ info.minorInnerManageAddCount }}</p>
-                <p>{{ info.minorOuterManageAddCount }}</p>
-                <p>{{ info.minorInnerManageTotal }}</p>
-                <p>{{ info.minorOuterManageTotal }}</p>
-              </div>
-            </div>
-            <!-- 转为医学留观数 -->
-            <div class="item">
-              <div class="title">
-                转为医学留观数
-                <span>※核酸检测阳性、疑似病例</span>
-              </div>
               <div class="sub-title">
-                <p>当日新增</p>
-                <p>累计</p>
+                <p>当日接种人数</p>
+                <p>累计接种剂次</p>
+                <p>累计接种人数</p>
               </div>
-              <div class="third-title">
-                <p>区内</p>
-                <p>区外</p>
-                <p>区外</p>
-                <p>区内</p>
-              </div>
-              <div class="third-value">
-                <p>{{ info.minorInnerObserveAddCount }}</p>
-                <p>{{ info.minorOuterObserveAddCount }}</p>
-                <p>{{ info.minorInnerObserveTotal }}</p>
-                <p>{{ info.minorOuterObserveTotal }}</p>
-              </div>
-            </div>
-            <!-- 解除观察数 -->
-            <div class="item">
-              <div class="title">解除观察数</div>
-              <div class="sub-title">
-                <p>当日新增</p>
-                <p>累计</p>
-              </div>
-              <div class="third-title">
-                <p>区内</p>
-                <p>区外</p>
-                <p>区外</p>
-                <p>区内</p>
-              </div>
-              <div class="third-value">
-                <p>{{ info.minorInnerRelieveAddCount }}</p>
-                <p>{{ info.minorOuterRelieveAddCount }}</p>
-                <p>{{ info.minorInnerRelieveTotal }}</p>
-                <p>{{ info.minorOuterRelieveTotal }}</p>
+              <div class="sub-value">
+                <p>{{ info.vaccinationDayAddCount }}</p>
+                <p>{{ info.vaccinationTimesTotal }}</p>
+                <p>{{ info.vaccinationPersonTotal }}</p>
               </div>
             </div>
           </vue-scroll>
@@ -184,6 +120,8 @@
 
 <script>
 // import { loadObserveStatementTrend, loadObserveStatementGetVo } from '@api/observe'
+import { loadStreetAntiepidemicStateList } from '@api/observe'
+
 // 引入 echarts 核心模块，核心模块提供了 echarts 使用必须要的接口。
 import * as echarts from 'echarts/core'
 // 引入柱状图图表，图表后缀都为 Chart
@@ -195,8 +133,8 @@ import { CanvasRenderer } from 'echarts/renderers'
 
 // 注册必须的组件
 echarts.use([TitleComponent, TooltipComponent, GridComponent, LineChart, CanvasRenderer, LegendComponent])
-import { loadHotelIsolateStateList } from '@api/observe'
-import { hotelDict } from '@/utils/dict'
+
+import { streetDict } from '@/utils/dict'
 
 export default {
   name: 'Hotel',
@@ -204,7 +142,7 @@ export default {
     return {
       info: {},
       showPicker: false,
-      columns: hotelDict.map(item => {
+      columns: streetDict.map(item => {
         return {
           ...item,
           text: item.name
@@ -225,8 +163,8 @@ export default {
         message: '正在加载...'
       })
       try {
-        await this.loadHotelIsolateStateList({
-          id: this.value.value
+        await this.loadStreetAntiepidemicStateList({
+          streetCode: this.value.value
         })
       } catch (error) {
         console.error('init => error', error)
@@ -234,12 +172,12 @@ export default {
         toast.clear()
       }
     },
-    async loadHotelIsolateStateList(params) {
+    async loadStreetAntiepidemicStateList(params) {
       try {
-        const { data } = await loadHotelIsolateStateList(params)
+        const { data } = await loadStreetAntiepidemicStateList(params)
         this.info = data
       } catch (error) {
-        console.error('loadHotelIsolateStateList => error', error)
+        console.error('loadStreetAntiepidemicStateList => error', error)
       }
     },
     // async loadObserveStatementTrend(name) {

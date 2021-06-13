@@ -1,12 +1,14 @@
 <template>
   <div>
-    <van-swipe class="my-swipe">
+    <van-icon class="arrow arrow-left" name="arrow-left" />
+    <van-icon class="arrow arrow-right" name="arrow" />
+    <van-swipe class="my-swipe" :loop="false">
       <van-swipe-item>
         <div class="view-container">
           <vue-scroll class="scroller">
             <div class="outside-title">密接者</div>
             <div class="select" @click="showPicker = true">
-              {{ value }}
+              {{ value.name }}
               <van-icon name="arrow-down" />
             </div>
             <!-- 当日新增人数 -->
@@ -17,8 +19,8 @@
                 <p>区外</p>
               </div>
               <div class="sub-value">
-                <p>1</p>
-                <p>2</p>
+                <p>{{ info.intimateInnerAddCount }}</p>
+                <p>{{ info.intimateOuterAddCount }}</p>
               </div>
             </div>
             <!-- 累计 -->
@@ -29,8 +31,8 @@
                 <p>区外</p>
               </div>
               <div class="sub-value">
-                <p>1</p>
-                <p>2</p>
+                <p>{{ info.intimateInnerTotal }}</p>
+                <p>{{ info.intimateOuterTotal }}</p>
               </div>
             </div>
             <!-- 当日解除人数 -->
@@ -41,8 +43,8 @@
                 <p>区外</p>
               </div>
               <div class="sub-value">
-                <p>1</p>
-                <p>2</p>
+                <p>{{ info.intimateInnerRelieveCount }}</p>
+                <p>{{ info.intimateOuterRelieveCount }}</p>
               </div>
             </div>
             <!-- 累计解除人数 -->
@@ -53,8 +55,8 @@
                 <p>区外</p>
               </div>
               <div class="sub-value">
-                <p>1</p>
-                <p>2</p>
+                <p>{{ info.intimateInnerRelieveTotal }}</p>
+                <p>{{ info.intimateOuterRelieveTotal }}</p>
               </div>
             </div>
             <!-- 现有 -->
@@ -71,10 +73,10 @@
                 <p>酒店隔离人数</p>
               </div>
               <div class="third-value">
-                <p>1</p>
-                <p>2</p>
-                <p>3</p>
-                <p>4</p>
+                <p>{{ info.intimateInnerIsolateHotelCount }}</p>
+                <p>{{ info.intimateInnerIsolateHomeCount }}</p>
+                <p>{{ info.intimateInnerIsolateHandlingCount }}</p>
+                <p>{{ info.intimateOuterIsolateHotelCount }}</p>
               </div>
             </div>
           </vue-scroll>
@@ -85,7 +87,7 @@
           <vue-scroll class="scroller">
             <div class="outside-title">次密接者</div>
             <div class="select" @click="showPicker = true">
-              {{ value }}
+              {{ value.name }}
               <van-icon name="arrow-down" />
             </div>
             <!-- 当日新增人数 -->
@@ -96,8 +98,8 @@
                 <p>区外</p>
               </div>
               <div class="sub-value">
-                <p>1</p>
-                <p>2</p>
+                <p>{{ info.minorInnerAddCount }}</p>
+                <p>{{ info.minorOuterAddCount }}</p>
               </div>
             </div>
             <!-- 累计 -->
@@ -108,8 +110,8 @@
                 <p>区外</p>
               </div>
               <div class="sub-value">
-                <p>1</p>
-                <p>2</p>
+                <p>{{ info.minorInnerTotal }}</p>
+                <p>{{ info.minorOuterTotal }}</p>
               </div>
             </div>
             <!-- 当日解除人数 -->
@@ -120,8 +122,8 @@
                 <p>区外</p>
               </div>
               <div class="sub-value">
-                <p>1</p>
-                <p>2</p>
+                <p>{{ info.minorInnerRelieveCount }}</p>
+                <p>{{ info.minorOuterRelieveCount }}</p>
               </div>
             </div>
             <!-- 累计解除人数 -->
@@ -132,8 +134,8 @@
                 <p>区外</p>
               </div>
               <div class="sub-value">
-                <p>1</p>
-                <p>2</p>
+                <p>{{ info.minorInnerRelieveTotal }}</p>
+                <p>{{ info.minorOuterRelieveTotal }}</p>
               </div>
             </div>
             <!-- 现有 -->
@@ -150,10 +152,10 @@
                 <p>酒店隔离人数</p>
               </div>
               <div class="third-value">
-                <p>1</p>
-                <p>2</p>
-                <p>3</p>
-                <p>4</p>
+                <p>{{ info.minorInnerIsolateHotelCount }}</p>
+                <p>{{ info.minorInnerIsolateHomeCount }}</p>
+                <p>{{ info.minorInnerIsolateHandlingCount }}</p>
+                <p>{{ info.minorOuterIsolateHotelCount }}</p>
               </div>
             </div>
           </vue-scroll>
@@ -207,7 +209,8 @@
 </template>
 
 <script>
-import { loadStateStatementTrend, loadStateStatementGetVo } from '@api/state'
+// import { loadStateStatementTrend, loadStateStatementGetVo } from '@api/state'
+import { loadStreetIsolateStateList } from '@api/observe'
 // 引入 echarts 核心模块，核心模块提供了 echarts 使用必须要的接口。
 import * as echarts from 'echarts/core'
 // 引入柱状图图表，图表后缀都为 Chart
@@ -220,45 +223,26 @@ import { CanvasRenderer } from 'echarts/renderers'
 // 注册必须的组件
 echarts.use([TitleComponent, TooltipComponent, GridComponent, LineChart, CanvasRenderer, LegendComponent])
 
+import { streetDict } from '@/utils/dict'
+
 export default {
   name: 'Street',
   data() {
     return {
-      value: '全区',
       info: {},
       showPicker: false,
-      columns: [
-        '全区',
-        '江高',
-        '人和',
-        '太和',
-        '钟落潭',
-        '三元里',
-        '松洲',
-        '景泰',
-        '黄石',
-        '同德',
-        '棠景',
-        '新市',
-        '同和',
-        '京溪',
-        '永平',
-        '均禾',
-        '嘉禾',
-        '石井',
-        '金沙',
-        '云城',
-        '鹤龙',
-        '白云湖',
-        '石门',
-        '大源',
-        '龙归',
-        '外区'
-      ]
+      columns: streetDict.map(item => {
+        return {
+          ...item,
+          text: item.name
+        }
+      }),
+      value: {}
     }
   },
   mounted() {
-    // this.init()
+    this.value = this.columns[0]
+    this.init()
   },
   methods: {
     async init() {
@@ -268,86 +252,97 @@ export default {
         message: '正在加载...'
       })
       try {
-        await Promise.all([this.loadStateStatementTrend(this.value), this.loadStateStatementGetVo(this.value)])
+        // await Promise.all([this.loadStateStatementTrend(this.value), this.loadStateStatementGetVo(this.value)])
+        await this.loadStreetIsolateStateList({
+          streetCode: this.value.value
+        })
       } catch (error) {
         console.error('init => error', error)
       } finally {
         toast.clear()
       }
     },
-    async loadStateStatementTrend(name) {
+    // async loadStateStatementTrend(name) {
+    //   try {
+    //     const { data } = await loadStateStatementTrend(name)
+    //     this.initEcharts(data)
+    //   } catch (error) {
+    //     console.error('loadStateStatementTrend => error', error)
+    //   }
+    // },
+    // async loadStateStatementGetVo(name) {
+    //   try {
+    //     const { data } = await loadStateStatementGetVo(name)
+    //     console.log('loadStateStatementGetVo => data', data)
+    //     this.info = {}
+    //   } catch (error) {
+    //     console.error('loadStateStatementGetVo => error', error)
+    //   }
+    // },
+    async loadStreetIsolateStateList(params) {
       try {
-        const { data } = await loadStateStatementTrend(name)
-        this.initEcharts(data)
+        const { data } = await loadStreetIsolateStateList(params)
+        this.info = data
       } catch (error) {
-        console.error('loadStateStatementTrend => error', error)
+        console.error('loadStreetIsolateStateList => error', error)
       }
     },
-    async loadStateStatementGetVo(name) {
-      try {
-        const { data } = await loadStateStatementGetVo(name)
-        console.log('loadStateStatementGetVo => data', data)
-        this.info = {}
-      } catch (error) {
-        console.error('loadStateStatementGetVo => error', error)
-      }
-    },
-    initEcharts({ key, value }) {
-      const myChart = echarts.init(document.getElementById('echarts'))
-      myChart.setOption({
-        grid: {
-          top: 30,
-          right: 50,
-          bottom: 30
-        },
-        xAxis: {
-          type: 'category',
-          name: '日期',
-          boundaryGap: false,
-          data: key,
-          nameTextStyle: {
-            color: '#666666'
-          },
-          axisLabel: {
-            rotate: '20',
-            align: 'center',
-            margin: '18',
-            interval: 0
-          }
-        },
-        yAxis: {
-          type: 'value',
-          name: '人数',
-          nameTextStyle: {
-            color: '#666666'
-          },
-          splitLine: {
-            lineStyle: {
-              color: '#EFEFEF'
-            }
-          }
-        },
-        series: [
-          {
-            name: '密切接触者趋势',
-            type: 'line',
-            smooth: true,
-            areaStyle: {},
-            itemStyle: {
-              color: '#3695f7'
-            },
-            label: {
-              show: true
-            },
-            data: value
-          }
-        ]
-      })
-    },
+    // initEcharts({ key, value }) {
+    //   const myChart = echarts.init(document.getElementById('echarts'))
+    //   myChart.setOption({
+    //     grid: {
+    //       top: 30,
+    //       right: 50,
+    //       bottom: 30
+    //     },
+    //     xAxis: {
+    //       type: 'category',
+    //       name: '日期',
+    //       boundaryGap: false,
+    //       data: key,
+    //       nameTextStyle: {
+    //         color: '#666666'
+    //       },
+    //       axisLabel: {
+    //         rotate: '20',
+    //         align: 'center',
+    //         margin: '18',
+    //         interval: 0
+    //       }
+    //     },
+    //     yAxis: {
+    //       type: 'value',
+    //       name: '人数',
+    //       nameTextStyle: {
+    //         color: '#666666'
+    //       },
+    //       splitLine: {
+    //         lineStyle: {
+    //           color: '#EFEFEF'
+    //         }
+    //       }
+    //     },
+    //     series: [
+    //       {
+    //         name: '密切接触者趋势',
+    //         type: 'line',
+    //         smooth: true,
+    //         areaStyle: {},
+    //         itemStyle: {
+    //           color: '#3695f7'
+    //         },
+    //         label: {
+    //           show: true
+    //         },
+    //         data: value
+    //       }
+    //     ]
+    //   })
+    // },
     onConfirm(value) {
       this.value = value
       this.showPicker = false
-      this.init(this.value)
+      this.init()
     }
   }
 }

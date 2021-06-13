@@ -20,7 +20,7 @@ module.exports = {
   devServer: {
     proxy: {
       '/byfy': {
-        target: 'http://192.168.1.112:8082',
+        target: 'http://192.168.1.113/',
         ws: true,
         pathRewrite: {
           '^/byfy': '/byfy'
