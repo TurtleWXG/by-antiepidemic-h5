@@ -1,7 +1,7 @@
 <template>
   <div>
-    <van-icon class="arrow arrow-left" name="arrow-left" />
-    <van-icon class="arrow arrow-right" name="arrow" />
+    <!-- <van-icon class="arrow arrow-left" name="arrow-left" />
+    <van-icon class="arrow arrow-right" name="arrow" /> -->
     <van-swipe class="my-swipe" :loop="false">
       <van-swipe-item>
         <div class="view-container">
