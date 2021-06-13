@@ -33,8 +33,8 @@
               <div class="third-title">
                 <p>区内</p>
                 <p>区外</p>
-                <p>区外</p>
                 <p>区内</p>
+                <p>区外</p>
               </div>
               <div class="third-value">
                 <p>{{ info.intimateInnerManageAddCount }}</p>
@@ -56,8 +56,8 @@
               <div class="third-title">
                 <p>区内</p>
                 <p>区外</p>
-                <p>区外</p>
                 <p>区内</p>
+                <p>区外</p>
               </div>
               <div class="third-value">
                 <p>{{ info.intimateInnerObserveAddCount }}</p>
@@ -76,8 +76,8 @@
               <div class="third-title">
                 <p>区内</p>
                 <p>区外</p>
-                <p>区外</p>
                 <p>区内</p>
+                <p>区外</p>
               </div>
               <div class="third-value">
                 <p>{{ info.intimateInnerRelieveAddCount }}</p>
@@ -119,8 +119,8 @@
               <div class="third-title">
                 <p>区内</p>
                 <p>区外</p>
-                <p>区外</p>
                 <p>区内</p>
+                <p>区外</p>
               </div>
               <div class="third-value">
                 <p>{{ info.minorInnerManageAddCount }}</p>
@@ -142,8 +142,8 @@
               <div class="third-title">
                 <p>区内</p>
                 <p>区外</p>
-                <p>区外</p>
                 <p>区内</p>
+                <p>区外</p>
               </div>
               <div class="third-value">
                 <p>{{ info.minorInnerObserveAddCount }}</p>
@@ -162,8 +162,8 @@
               <div class="third-title">
                 <p>区内</p>
                 <p>区外</p>
-                <p>区外</p>
                 <p>区内</p>
+                <p>区外</p>
               </div>
               <div class="third-value">
                 <p>{{ info.minorInnerRelieveAddCount }}</p>
