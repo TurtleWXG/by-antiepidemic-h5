@@ -7,6 +7,14 @@ import './plugins/scroller'
 
 Vue.config.productionTip = false
 
+Vue.filter('isEmpty', function(value) {
+  if (value === undefined) {
+    return '0'
+  } else {
+    return value
+  }
+})
+
 new Vue({
   router,
   store,
