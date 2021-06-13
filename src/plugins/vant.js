@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import { Button, Search, List, Form, Field, RadioGroup, Radio, Calendar, Popup, Area, Picker, Toast, Icon } from 'vant'
+import { Button, Search, List, Form, Field, RadioGroup, Radio, Calendar, Popup, Area, Picker, Toast, Icon, Swipe, SwipeItem } from 'vant'
 
 Vue.use(Button)
 Vue.use(Search)
@@ -14,6 +14,8 @@ Vue.use(Area)
 Vue.use(Picker)
 Vue.use(Toast)
 Vue.use(Icon)
+Vue.use(Swipe)
+Vue.use(SwipeItem)
 
 // 允许同时存在多个 Toast
 Toast.allowMultiple()

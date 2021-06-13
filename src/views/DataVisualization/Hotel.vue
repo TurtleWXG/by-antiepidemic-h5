@@ -1,50 +1,102 @@
 <template>
-  <div class="view-container">
-    <vue-scroll class="scroller">
-      <div class="select" @click="showPicker = true">
-        {{ value }}
-        <van-icon name="arrow-down" />
+  <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
+    <van-swipe-item>
+      <div class="view-container">
+        <vue-scroll class="scroller">
+          <div class="select" @click="showPicker = true">
+            {{ value }}
+            <van-icon name="arrow-down" />
+          </div>
+          <div id="echarts" class="echarts-view"></div>
+          <div class="detail">
+            <div class="detail-item">
+              <label>剩余房间数/总房间数</label>
+              <span>-- / --</span>
+            </div>
+            <div class="detail-item">
+              <label>当日新增管理人数</label>
+              <span>{{ info.intimateManageAddCount }}</span>
+            </div>
+            <div class="detail-item">
+              <label>目前在管人数</label>
+              <span>{{ info.intimateManageTotal }}</span>
+            </div>
+            <div class="detail-item">
+              <label>累计管理人数</label>
+              <span>--</span>
+            </div>
+            <div class="detail-item">
+              <label>转为医学留观数(当日新增)</label>
+              <span>{{ info.intimateObserveAddCount }}</span>
+            </div>
+            <div class="detail-item">
+              <label>转为医学留观数(累计)</label>
+              <span>{{ info.intimateObserveTotal }}</span>
+            </div>
+            <div class="detail-item">
+              <label>解除观察数(当日新增)</label>
+              <span>{{ info.intimateRelieveObserveAddCount }}</span>
+            </div>
+            <div class="detail-item">
+              <label>解除观察数(累计)</label>
+              <span>{{ info.intimateRelieveObserveTotal }}</span>
+            </div>
+          </div>
+        </vue-scroll>
+        <van-popup v-model="showPicker" round position="bottom">
+          <van-picker show-toolbar :columns="columns" @cancel="showPicker = false" @confirm="onConfirm" />
+        </van-popup>
       </div>
-      <div id="echarts" class="echarts-view"></div>
-      <div class="detail">
-        <div class="detail-item">
-          <label>剩余房间数/总房间数</label>
-          <span>-- / --</span>
-        </div>
-        <div class="detail-item">
-          <label>当日新增管理人数</label>
-          <span>{{ info.intimateManageAddCount }}</span>
-        </div>
-        <div class="detail-item">
-          <label>目前在管人数</label>
-          <span>{{ info.intimateManageTotal }}</span>
-        </div>
-        <div class="detail-item">
-          <label>累计管理人数</label>
-          <span>--</span>
-        </div>
-        <div class="detail-item">
-          <label>转为医学留观数(当日新增)</label>
-          <span>{{ info.intimateObserveAddCount }}</span>
-        </div>
-        <div class="detail-item">
-          <label>转为医学留观数(累计)</label>
-          <span>{{ info.intimateObserveTotal }}</span>
-        </div>
-        <div class="detail-item">
-          <label>解除观察数(当日新增)</label>
-          <span>{{ info.intimateRelieveObserveAddCount }}</span>
-        </div>
-        <div class="detail-item">
-          <label>解除观察数(累计)</label>
-          <span>{{ info.intimateRelieveObserveTotal }}</span>
-        </div>
+    </van-swipe-item>
+    <van-swipe-item>
+      <div class="view-container">
+        <vue-scroll class="scroller">
+          <div class="select" @click="showPicker = true">
+            {{ value }}111
+            <van-icon name="arrow-down" />
+          </div>
+          <div id="echarts" class="echarts-view"></div>
+          <div class="detail">
+            <div class="detail-item">
+              <label>剩余房间数/总房间数</label>
+              <span>-- / --</span>
+            </div>
+            <div class="detail-item">
+              <label>当日新增管理人数</label>
+              <span>{{ info.intimateManageAddCount }}</span>
+            </div>
+            <div class="detail-item">
+              <label>目前在管人数</label>
+              <span>{{ info.intimateManageTotal }}</span>
+            </div>
+            <div class="detail-item">
+              <label>累计管理人数</label>
+              <span>--</span>
+            </div>
+            <div class="detail-item">
+              <label>转为医学留观数(当日新增)</label>
+              <span>{{ info.intimateObserveAddCount }}</span>
+            </div>
+            <div class="detail-item">
+              <label>转为医学留观数(累计)</label>
+              <span>{{ info.intimateObserveTotal }}</span>
+            </div>
+            <div class="detail-item">
+              <label>解除观察数(当日新增)</label>
+              <span>{{ info.intimateRelieveObserveAddCount }}</span>
+            </div>
+            <div class="detail-item">
+              <label>解除观察数(累计)</label>
+              <span>{{ info.intimateRelieveObserveTotal }}</span>
+            </div>
+          </div>
+        </vue-scroll>
+        <van-popup v-model="showPicker" round position="bottom">
+          <van-picker show-toolbar :columns="columns" @cancel="showPicker = false" @confirm="onConfirm" />
+        </van-popup>
       </div>
-    </vue-scroll>
-    <van-popup v-model="showPicker" round position="bottom">
-      <van-picker show-toolbar :columns="columns" @cancel="showPicker = false" @confirm="onConfirm" />
-    </van-popup>
-  </div>
+    </van-swipe-item>
+  </van-swipe>
 </template>
 
 <script>
@@ -180,70 +232,5 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.view-container {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  top: 170px;
-  left: 15px;
-  right: 15px;
-  bottom: 75px;
-  background: #ffffff;
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  &::before {
-    content: '密切接触者趋势';
-    position: absolute;
-    top: -15px;
-    left: 50%;
-    width: 226px;
-    height: 48px;
-    font-size: 18px;
-    font-weight: 600;
-    color: #e8502c;
-    text-align: center;
-    line-height: 40px;
-    background: url('~@/assets/tips.png');
-    background-size: 100% 100%;
-    transform: translateX(-50%);
-    z-index: 10;
-  }
-  .select {
-    height: 22px;
-    margin-top: 30px;
-    font-size: 16px;
-    text-align: center;
-    font-weight: 500;
-    color: #424242;
-  }
-  .echarts-view {
-    width: 100%;
-    height: 200px;
-  }
-  .detail {
-    margin: 20px 0;
-    &-item {
-      width: 315px;
-      height: 40px;
-      line-height: 40px;
-      font-size: 14px;
-      font-weight: 400;
-      color: #333333;
-      margin: 0 auto;
-      background: #f7f7f7;
-      border-radius: 20px;
-      label {
-        display: inline-block;
-        width: 220px;
-        padding-left: 20px;
-      }
-      span {
-        color: #3695f7;
-      }
-    }
-    .detail-item + .detail-item {
-      margin-top: 10px;
-    }
-  }
-}
+@import './style.scss';
 </style>
