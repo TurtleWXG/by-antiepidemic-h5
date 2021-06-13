@@ -1,5 +1,21 @@
 import Vue from 'vue'
-import { Button, Search, List, Form, Field, RadioGroup, Radio, Calendar, Popup, Area, Picker, Toast, Icon, Swipe, SwipeItem } from 'vant'
+import {
+  Button,
+  Search,
+  List,
+  Form,
+  Field,
+  RadioGroup,
+  Radio,
+  Calendar,
+  Popup,
+  Area,
+  Picker,
+  Toast,
+  Icon,
+  Swipe,
+  SwipeItem
+} from 'vant'
 
 Vue.use(Button)
 Vue.use(Search)

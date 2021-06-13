@@ -67,4 +67,39 @@
       margin-top: 10px;
     }
   }
+  .item {
+    width: 90%;
+    min-height: 100px;
+    margin: 15px auto;
+    padding: 0 20px 15px;
+    box-sizing: border-box;
+    box-shadow: 0 1px 10px rgba($color: #333, $alpha: 0.1);
+    border-radius: 6px;
+    .title {
+      font-size: 15px;
+      font-weight: 500;
+      text-align: center;
+      border-bottom: 1px solid #ebeef5;
+      padding: 7px 0;
+    }
+    .sub-title,
+    .sub-value {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      font-size: 14px;
+      p {
+        width: 40%;
+        padding: 7px 0;
+        text-align: center;
+        border-bottom: 1px solid #ebeef5;
+      }
+    }
+    .sub-value p {
+      border: none;
+    }
+  }
+  .item:first-child {
+    margin-top: 30px;
+  }
 }
