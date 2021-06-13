@@ -45,48 +45,22 @@
     <van-swipe-item>
       <div class="view-container">
         <vue-scroll class="scroller">
-          <div class="select" @click="showPicker = true">
-            {{ value }}
-            <van-icon name="arrow-down" />
-          </div>
-          <div id="echarts" class="echarts-view"></div>
-          <div class="detail">
-            <div class="detail-item">
-              <label>当日新增人数</label>
-              <span>{{ info.intimateAddCount }}</span>
+          <div v-for="item in 10" :key="item" class="item">
+            <div class="title">目前在管人数</div>
+            <div class="sub-title">
+              <p>区内</p>
+              <p>区外</p>
             </div>
-            <div class="detail-item">
-              <label>当日解除观察人数</label>
-              <span>--</span>
-            </div>
-            <div class="detail-item">
-              <label>现有密切接触者(集中隔离)</label>
-              <span>{{ info.intimateIsolateInHotelCount }}</span>
-            </div>
-            <div class="detail-item">
-              <label>现有密切接触者(居家隔离)</label>
-              <span>{{ info.intimateIsolateInOtherCount }}</span>
-            </div>
-            <div class="detail-item">
-              <label>累计密切接触者(集中隔离)</label>
-              <span>{{
-                info.intimateAddCount + info.intimateIsolateInHotelCount + info.intimateIsolateInOtherCount
-              }}</span>
-            </div>
-            <div class="detail-item">
-              <label>累计密切接触者(居家隔离)</label>
-              <span>--</span>
+            <div class="sub-value">
+              <p>1</p>
+              <p>2</p>
             </div>
           </div>
         </vue-scroll>
-        <van-popup v-model="showPicker" round position="bottom">
-          <van-picker show-toolbar :columns="columns" @cancel="showPicker = false" @confirm="onConfirm" />
-        </van-popup>
       </div>
     </van-swipe-item>
   </van-swipe>
 </template>
-
 <script>
 import { loadStateStatementTrend, loadStateStatementGetVo } from '@api/state'
 // 引入 echarts 核心模块，核心模块提供了 echarts 使用必须要的接口。
@@ -139,7 +113,7 @@ export default {
     }
   },
   mounted() {
-    this.init()
+    // this.init()
   },
   methods: {
     async init() {
@@ -235,4 +209,105 @@ export default {
 </script>
 <style lang="scss" scoped>
 @import './style.scss';
+.view-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 170px;
+  left: 15px;
+  right: 15px;
+  bottom: 75px;
+  background: #ffffff;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  &::before {
+    content: '密切接触者趋势';
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    width: 226px;
+    height: 48px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #e8502c;
+    text-align: center;
+    line-height: 40px;
+    background: url('~@/assets/tips.png');
+    background-size: 100% 100%;
+    transform: translateX(-50%);
+    z-index: 10;
+  }
+  .select {
+    height: 22px;
+    margin-top: 30px;
+    font-size: 16px;
+    text-align: center;
+    font-weight: 500;
+    color: #424242;
+  }
+  .echarts-view {
+    width: 100%;
+    height: 200px;
+  }
+  .detail {
+    margin: 20px 0;
+    &-item {
+      width: 315px;
+      height: 40px;
+      line-height: 40px;
+      font-size: 14px;
+      font-weight: 400;
+      color: #333333;
+      margin: 0 auto;
+      background: #f7f7f7;
+      border-radius: 20px;
+      label {
+        display: inline-block;
+        width: 220px;
+        padding-left: 20px;
+      }
+      span {
+        color: #3695f7;
+      }
+    }
+    .detail-item + .detail-item {
+      margin-top: 10px;
+    }
+  }
+  .item {
+    width: 90%;
+    min-height: 100px;
+    margin: 15px auto;
+    padding: 0 20px 15px;
+    box-sizing: border-box;
+    box-shadow: 0 1px 10px rgba($color: #333, $alpha: 0.1);
+    border-radius: 6px;
+    .title {
+      font-size: 15px;
+      font-weight: 500;
+      text-align: center;
+      border-bottom: 1px solid #ebeef5;
+      padding: 7px 0;
+    }
+    .sub-title,
+    .sub-value {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      font-size: 14px;
+      p {
+        width: 40%;
+        padding: 7px 0;
+        text-align: center;
+        border-bottom: 1px solid #ebeef5;
+      }
+    }
+    .sub-value p {
+      border: none;
+    }
+  }
+  .item:first-child {
+    margin-top: 30px;
+  }
+}
 </style>
