@@ -90,46 +90,6 @@
         </div>
       </van-swipe-item>
       <van-swipe-item>
-        <!-- <div class="view-container">
-          <vue-scroll class="scroller">
-            <div class="select" @click="showPicker = true">
-              {{ value }}
-              <van-icon name="arrow-down" />
-            </div>
-            <div id="echarts" class="echarts-view"></div>
-            <div class="detail">
-              <div class="detail-item">
-                <label>当日新增人数</label>
-                <span>{{ info.intimateAddCount }}</span>
-              </div>
-              <div class="detail-item">
-                <label>当日解除观察人数</label>
-                <span>--</span>
-              </div>
-              <div class="detail-item">
-                <label>现有密切接触者(集中隔离)</label>
-                <span>{{ info.intimateIsolateInHotelCount }}</span>
-              </div>
-              <div class="detail-item">
-                <label>现有密切接触者(居家隔离)</label>
-                <span>{{ info.intimateIsolateInOtherCount }}</span>
-              </div>
-              <div class="detail-item">
-                <label>累计密切接触者(集中隔离)</label>
-                <span>{{
-                  info.intimateAddCount + info.intimateIsolateInHotelCount + info.intimateIsolateInOtherCount
-                }}</span>
-              </div>
-              <div class="detail-item">
-                <label>累计密切接触者(居家隔离)</label>
-                <span>--</span>
-              </div>
-            </div>
-          </vue-scroll>
-          <van-popup v-model="showPicker" round position="bottom">
-            <van-picker show-toolbar :columns="columns" @cancel="showPicker = false" @confirm="onConfirm" />
-          </van-popup>
-        </div> -->
         <div class="view-container">
           <vue-scroll class="scroller">
             <div class="outside-title">次密接者</div>
@@ -221,6 +181,46 @@
     <van-popup v-model="showPicker" round position="bottom">
       <van-picker show-toolbar :columns="columns" @cancel="showPicker = false" @confirm="onConfirm" />
     </van-popup>
+    <!-- <div class="view-container">
+    <vue-scroll class="scroller">
+      <div class="select" @click="showPicker = true">
+        {{ value }}
+        <van-icon name="arrow-down" />
+      </div>
+      <div id="echarts" class="echarts-view"></div>
+      <div class="detail">
+        <div class="detail-item">
+          <label>当日新增人数</label>
+          <span>{{ info.intimateAddCount }}</span>
+        </div>
+        <div class="detail-item">
+          <label>当日解除观察人数</label>
+          <span>--</span>
+        </div>
+        <div class="detail-item">
+          <label>现有密切接触者(集中隔离)</label>
+          <span>{{ info.intimateIsolateInHotelCount }}</span>
+        </div>
+        <div class="detail-item">
+          <label>现有密切接触者(居家隔离)</label>
+          <span>{{ info.intimateIsolateInOtherCount }}</span>
+        </div>
+        <div class="detail-item">
+          <label>累计密切接触者(集中隔离)</label>
+          <span>{{
+            info.intimateAddCount + info.intimateIsolateInHotelCount + info.intimateIsolateInOtherCount
+          }}</span>
+        </div>
+        <div class="detail-item">
+          <label>累计密切接触者(居家隔离)</label>
+          <span>--</span>
+        </div>
+      </div>
+    </vue-scroll>
+    <van-popup v-model="showPicker" round position="bottom">
+      <van-picker show-toolbar :columns="columns" @cancel="showPicker = false" @confirm="onConfirm" />
+    </van-popup>
+  </div> -->
   </div>
 </template>
 
