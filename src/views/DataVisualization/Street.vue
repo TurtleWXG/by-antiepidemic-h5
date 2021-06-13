@@ -3,6 +3,90 @@
     <van-swipe-item>
       <div class="view-container">
         <vue-scroll class="scroller">
+          <div class="outside-title">密接者</div>
+          <!-- 在管人数 -->
+          <div class="item">
+            <div class="title">目前在管人数</div>
+            <div class="sub-title">
+              <p>区内</p>
+              <p>区外</p>
+            </div>
+            <div class="sub-value">
+              <p>1</p>
+              <p>2</p>
+            </div>
+          </div>
+          <!-- 管理人数 -->
+          <div class="item">
+            <div class="title">管理人数</div>
+            <div class="sub-title">
+              <p>当日新增</p>
+              <p>累计</p>
+            </div>
+            <div class="third-title">
+              <p>区内</p>
+              <p>区外</p>
+              <p>区外</p>
+              <p>区内</p>
+            </div>
+            <div class="third-value">
+              <p>1</p>
+              <p>2</p>
+              <p>3</p>
+              <p>4</p>
+            </div>
+          </div>
+          <!-- 转为医学留观数 -->
+          <div class="item">
+            <div class="title">
+              转为医学留观数
+              <span>※核酸检测阳性、疑似病例</span>
+            </div>
+            <div class="sub-title">
+              <p>当日新增</p>
+              <p>累计</p>
+            </div>
+            <div class="third-title">
+              <p>区内</p>
+              <p>区外</p>
+              <p>区外</p>
+              <p>区内</p>
+            </div>
+            <div class="third-value">
+              <p>1</p>
+              <p>2</p>
+              <p>3</p>
+              <p>4</p>
+            </div>
+          </div>
+          <!-- 解除观察数 -->
+          <div class="item">
+            <div class="title">
+              解除观察数
+            </div>
+            <div class="sub-title">
+              <p>当日新增</p>
+              <p>累计</p>
+            </div>
+            <div class="third-title">
+              <p>区内</p>
+              <p>区外</p>
+              <p>区外</p>
+              <p>区内</p>
+            </div>
+            <div class="third-value">
+              <p>1</p>
+              <p>2</p>
+              <p>3</p>
+              <p>4</p>
+            </div>
+          </div>
+        </vue-scroll>
+      </div>
+    </van-swipe-item>
+    <van-swipe-item>
+      <!-- <div class="view-container">
+        <vue-scroll class="scroller">
           <div class="select" @click="showPicker = true">
             {{ value }}
             <van-icon name="arrow-down" />
@@ -40,12 +124,12 @@
         <van-popup v-model="showPicker" round position="bottom">
           <van-picker show-toolbar :columns="columns" @cancel="showPicker = false" @confirm="onConfirm" />
         </van-popup>
-      </div>
-    </van-swipe-item>
-    <van-swipe-item>
+      </div> -->
       <div class="view-container">
         <vue-scroll class="scroller">
-          <div v-for="item in 10" :key="item" class="item">
+          <div class="outside-title">次密接者</div>
+          <!-- 在管人数 -->
+          <div class="item">
             <div class="title">目前在管人数</div>
             <div class="sub-title">
               <p>区内</p>
@@ -56,11 +140,77 @@
               <p>2</p>
             </div>
           </div>
+          <!-- 管理人数 -->
+          <div class="item">
+            <div class="title">管理人数</div>
+            <div class="sub-title">
+              <p>当日新增</p>
+              <p>累计</p>
+            </div>
+            <div class="third-title">
+              <p>区内</p>
+              <p>区外</p>
+              <p>区外</p>
+              <p>区内</p>
+            </div>
+            <div class="third-value">
+              <p>1</p>
+              <p>2</p>
+              <p>3</p>
+              <p>4</p>
+            </div>
+          </div>
+          <!-- 转为医学留观数 -->
+          <div class="item">
+            <div class="title">
+              转为医学留观数
+              <span>※核酸检测阳性、疑似病例</span>
+            </div>
+            <div class="sub-title">
+              <p>当日新增</p>
+              <p>累计</p>
+            </div>
+            <div class="third-title">
+              <p>区内</p>
+              <p>区外</p>
+              <p>区外</p>
+              <p>区内</p>
+            </div>
+            <div class="third-value">
+              <p>1</p>
+              <p>2</p>
+              <p>3</p>
+              <p>4</p>
+            </div>
+          </div>
+          <!-- 解除观察数 -->
+          <div class="item">
+            <div class="title">
+              解除观察数
+            </div>
+            <div class="sub-title">
+              <p>当日新增</p>
+              <p>累计</p>
+            </div>
+            <div class="third-title">
+              <p>区内</p>
+              <p>区外</p>
+              <p>区外</p>
+              <p>区内</p>
+            </div>
+            <div class="third-value">
+              <p>1</p>
+              <p>2</p>
+              <p>3</p>
+              <p>4</p>
+            </div>
+          </div>
         </vue-scroll>
       </div>
     </van-swipe-item>
   </van-swipe>
 </template>
+
 <script>
 import { loadStateStatementTrend, loadStateStatementGetVo } from '@api/state'
 // 引入 echarts 核心模块，核心模块提供了 echarts 使用必须要的接口。
